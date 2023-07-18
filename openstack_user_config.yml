@@ -56,9 +56,9 @@
 #   - Storage network on 172.29.244.0/22. Data plane for storage services such
 #     as cinder and swift.
 #
- cidr_networks:
-   container: 172.29.236.0/22
-   storage: 172.29.244.0/22
+cidr_networks:
+  container: 172.29.236.0/22
+  storage: 172.29.244.0/22
 #
 # Example:
 #
@@ -88,8 +88,8 @@
 # network device management.
 #
 used_ips:
-   - "172.29.236.1,172.29.236.50"
-   - "172.29.244.1,172.29.244.50"
+  - "172.29.236.1,172.29.236.50"
+  - "172.29.244.1,172.29.244.50"
 #
 # --------
 #
@@ -239,31 +239,31 @@ used_ips:
 #   (the native VLAN in some parlance). However, additional 'vlan' or 'flat'
 #   networks require additional bridges.
 #
-   provider_networks:
-     - network:
-         group_binds:
-           - all_containers
-           - hosts
-         type: "raw"
-         container_bridge: "br-mgmt"
-         container_interface: "eth1"
-         container_type: "veth"
-         ip_from_q: "management"
-         is_management_address: true
-     - network:
-         group_binds:
-           - glance_api
-           - cinder_api
-           - cinder_volume
-           - nova_compute
+provider_networks:
+  - network:
+    group_binds:
+      - all_containers
+      - hosts
+    type: "raw"
+    container_bridge: "br-mgmt"
+    container_interface: "eth1"
+    container_type: "veth"
+    ip_from_q: "management"
+    is_management_address: true
+    - network:
+      group_binds:
+        - glance_api
+        - cinder_api
+        - cinder_volume
+        - nova_compute
            # Uncomment the next line if using swift with a storage network.
            # - swift_proxy
-         type: "raw"
-         container_bridge: "br-storage"
-         container_type: "veth"
-         container_interface: "eth2"
-         container_mtu: "9000"
-         ip_from_q: "storage"
+      type: "raw"
+      container_bridge: "br-storage"
+      container_type: "veth"
+      container_interface: "eth2"
+      container_mtu: "9000"
+      ip_from_q: "storage"
 #     - network:
 #         group_binds:
 #           - neutron_linuxbridge_agent
@@ -275,24 +275,24 @@ used_ips:
 #         type: "vxlan"
 #         range: "1:1000"
 #         net_name: "vxlan"
-     - network:
-         group_binds:
-           - neutron_linuxbridge_agent
-         container_bridge: "br-vlan"
-         container_type: "veth"
-         container_interface: "eth11"
-         type: "vlan"
-         range: "101:200,301:400"
-         net_name: "vlan"
-     - network:
-         group_binds:
-           - neutron_linuxbridge_agent
-         container_bridge: "br-vlan"
-         container_type: "veth"
-         container_interface: "eth12"
-         host_bind_override: "eth12"
-         type: "flat"
-         net_name: "flat"
+    - network:
+      group_binds:
+      - neutron_linuxbridge_agent
+      container_bridge: "br-vlan"
+      container_type: "veth"
+      container_interface: "eth11"
+      type: "vlan"
+      range: "101:200,301:400"
+      net_name: "vlan"
+    - network:
+      group_binds:
+        - neutron_linuxbridge_agent
+      container_bridge: "br-vlan"
+      container_type: "veth"
+      container_interface: "eth12"
+      host_bind_override: "eth12"
+      type: "flat"
+      net_name: "flat"
 #
 # --------
 #
@@ -312,9 +312,9 @@ used_ips:
 #
 # Define three shared infrastructure hosts:
 #
- shared-infra_hosts:
-   infra1:
-     ip: 172.29.236.10
+shared-infra_hosts:
+  infra1:
+    ip: 172.29.236.10
 #   infra2:
 #     ip: 172.29.236.102
 #   infra3:
@@ -339,8 +339,8 @@ used_ips:
 # Define three package repository hosts:
 #
 repo-infra_hosts:
-   infra1:
-     ip: 172.29.236.10
+  infra1:
+    ip: 172.29.236.10
 #   infra2:
 #     ip: 172.29.236.102
 #   infra3:
@@ -383,9 +383,9 @@ repo-infra_hosts:
 #
 # Define three OpenStack infrastructure hosts:
 #
- os-infra_hosts:
-   infra1:
-     ip: 172.29.236.10
+os-infra_hosts:
+  infra1:
+    ip: 172.29.236.10
 #   infra2:
 #     ip: 172.29.236.102
 #   infra3:
@@ -409,9 +409,9 @@ repo-infra_hosts:
 #
 # Define three OpenStack identity hosts:
 #
- identity_hosts:
-   infra1:
-     ip: 172.29.236.10
+identity_hosts:
+  infra1:
+    ip: 172.29.236.10
 #   infra2:
 #     ip: 172.29.236.102
 #   infra3:
@@ -435,9 +435,9 @@ repo-infra_hosts:
 #
 # Define three OpenStack network hosts:
 #
- network_hosts:
-   infra1:
-     ip: 172.29.236.10
+network_hosts:
+  infra1:
+    ip: 172.29.236.10
 #   infra2:
 #     ip: 172.29.236.102
 #   infra3:
@@ -527,9 +527,9 @@ repo-infra_hosts:
 #
 # Define three OpenStack storage infrastructure hosts:
 #
- storage-infra_hosts:
-   infra1:
-     ip: 172.29.236.10
+storage-infra_hosts:
+  infra1:
+    ip: 172.29.236.10
 #   infra2:
 #     ip: 172.29.236.102
 #   infra3:
@@ -643,9 +643,17 @@ repo-infra_hosts:
 #
 # Define an OpenStack storage host:
 #
-# storage_hosts:
-#   lvm-storage1:
-#     ip: 172.29.236.131
+storage_hosts:
+  infra1:
+    ip: 172.29.236.10
+    container-vars:
+      cinder_backend:
+        limit_container_types: cinder_volume
+        lvm:
+          volume_group: cinder-volume
+          volume_driver: cinder.volume.drivers.lvm.LVMVolumeDriver
+          volume_bakend_name: LVM_iSCSI
+          iscsi_ip_address: "172.29.236.10"
 #
 # Example:
 #
