@@ -250,20 +250,21 @@ provider_networks:
     container_type: "veth"
     ip_from_q: "management"
     is_management_address: true
-    - network:
-      group_binds:
-        - glance_api
-        - cinder_api
-        - cinder_volume
-        - nova_compute
-           # Uncomment the next line if using swift with a storage network.
-           # - swift_proxy
-      type: "raw"
-      container_bridge: "br-storage"
-      container_type: "veth"
-      container_interface: "eth2"
-      container_mtu: "9000"
-      ip_from_q: "storage"
+  - network:
+    group_binds:
+      - glance_api
+      - cinder_api
+      - cinder_volume
+      - nova_compute
+         # Uncomment the next line if using swift with a storage network.
+         # - swift_proxy
+    type: "raw"
+    container_bridge: "br-storage"
+    container_type: "veth"
+    container_interface: "eth2"
+    container_mtu: "9000"
+    ip_from_q: "storage"
+
 #     - network:
 #         group_binds:
 #           - neutron_linuxbridge_agent
@@ -275,24 +276,25 @@ provider_networks:
 #         type: "vxlan"
 #         range: "1:1000"
 #         net_name: "vxlan"
-    - network:
-      group_binds:
+
+  - network:
+    group_binds:
+    - neutron_linuxbridge_agent
+    container_bridge: "br-vlan"
+    container_type: "veth"
+    container_interface: "eth11"
+    type: "vlan"
+    range: "101:200,301:400"
+    net_name: "vlan"
+  - network:
+    group_binds:
       - neutron_linuxbridge_agent
-      container_bridge: "br-vlan"
-      container_type: "veth"
-      container_interface: "eth11"
-      type: "vlan"
-      range: "101:200,301:400"
-      net_name: "vlan"
-    - network:
-      group_binds:
-        - neutron_linuxbridge_agent
-      container_bridge: "br-vlan"
-      container_type: "veth"
-      container_interface: "eth12"
-      host_bind_override: "eth12"
-      type: "flat"
-      net_name: "flat"
+    container_bridge: "br-vlan"
+    container_type: "veth"
+    container_interface: "eth12"
+    host_bind_override: "eth12"
+    type: "flat"
+    net_name: "flat"
 #
 # --------
 #
