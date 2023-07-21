@@ -1,0 +1,28 @@
+network:
+  version: 2
+  ethernets:
+    enp3s0:
+      dhcp4: false
+  vlans:
+    enp3s0.10:
+      id: 10
+      link: enp3s0
+  bridges:
+    br-mgmt:
+      addresses:
+      - 172.29.236.9/22
+      interfaces:
+      - enp3s0.10
+      mtu: 1500
+    br-ext:
+      addresses:
+      - 10.0.3.176/22
+      interfaces:
+      - enp3s0
+      mtu: 1500
+      routes:
+      - to: 0.0.0.0/0
+        via: 10.0.3.254
+      nameservers:
+        addresses:
+          - 10.0.3.254
