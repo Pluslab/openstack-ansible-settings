@@ -9,7 +9,7 @@ used_ips:
   - "172.29.244.1,172.29.244.50"
 
 global_overrides:
-  external_lb_vip_address: 172.17.31.11
+  external_lb_vip_address: 10.0.3.172
   internal_lb_vip_address: 172.29.236.10
   management_bridge: "br-mgmt"
   provider_networks:
