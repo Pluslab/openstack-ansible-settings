@@ -1,4 +1,5 @@
 ---
+# Network configuration
 cidr_networks:
   container: 172.29.236.0/22
   storage: 172.29.244.0/22
@@ -49,29 +50,53 @@ global_overrides:
           - cinder_volume
           - nova_compute
 
-shared-infra_hosts:
-  infra1:
-    ip: 172.29.236.10
 
-repo-infra_hosts:
-  infra1:
-    ip: 172.29.236.10
-
-os-infra_hosts:
-  infra1:
-    ip: 172.29.236.10
-
+# keystone
 identity_hosts:
   infra1:
     ip: 172.29.236.10
 
+# cinder api services
+storage-infra_hosts:
+  infra1:
+    ip: 172.29.236.10
+
+# glance
+image_hosts:
+  infra1:
+    ip: 172.29.236.10
+
+# placement
+placement-infra_hosts:
+  infra1:
+    ip: 172.29.236.10
+
+# nova api, conductor, etc services
+compute-infra_hosts:
+  infra1:
+    ip: 172.29.236.10
+
+# heat
+orchestration_hosts:
+  infra1:
+    ip: 172.29.236.10
+
+# horizon
+dashboard_hosts:
+  infra1:
+    ip: 172.29.236.10
+
+# neutron server, agents (L3, etc)
 network_hosts:
   infra1:
     ip: 172.29.236.10
 
-storage-infra_hosts:
-  infra1:
-    ip: 172.29.236.10
+# nova hypervisors
+# compute_hosts:
+#  compute1:
+#    ip: 172.29.236.11
+
+
 storage_hosts:
   infra1:
     ip: 172.29.236.10
