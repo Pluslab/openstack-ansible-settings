@@ -112,9 +112,9 @@ network_hosts:
     ip: 172.29.236.10
 
 # nova hypervisors
-# compute_hosts:
-#  compute1:
-#    ip: 172.29.236.11
+compute_hosts:
+ compute1:
+   ip: 172.29.236.11
 
 # ironic-compute_hosts:
 #   ironic-infra1:
