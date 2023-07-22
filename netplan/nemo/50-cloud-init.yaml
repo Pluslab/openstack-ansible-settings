@@ -1,0 +1,14 @@
+# network:
+#   version: 2
+#   ethernets:
+#     ### Bridge: 10.0.3.0/22 => main link
+#     enp2s0:
+#       addresses:
+#         - 10.0.3.175/22
+#       routes:
+#         - to: default
+#           via: 10.0.3.254
+#           metric: 100
+#       nameservers:
+#         addresses:
+#           - 10.0.3.254
