@@ -1,10 +1,12 @@
 ---
 cidr_networks:
   container: 172.29.236.0/22
+  tunnel: 172.29.240.0/22
   storage: 172.29.244.0/22
 
 used_ips:
   - "172.29.236.1,172.29.236.50"
+  - "172.29.240.1,172.29.240.50"
   - "172.29.244.1,172.29.244.50"
 
 global_overrides:
@@ -22,6 +24,16 @@ global_overrides:
           - all_containers
           - hosts
         is_container_address: true
+    - network:
+        container_bridge: "br-vxlan"
+        container_type: "veth"
+        container_interface: "eth10"
+        ip_from_q: "tunnel"
+        type: "vxlan"
+        range: "1:1000"
+        net_name: "vxlan"
+        group_binds:
+          - neutron_linuxbridge_agent
     - network:
         host_bind_override: "enp1s0"
         type: "flat"
