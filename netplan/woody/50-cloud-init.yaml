@@ -1,0 +1,12 @@
+#network:
+#  version: 2
+#  ethernets:
+#    enp3s0:
+#      addresses:
+#        - 10.0.3.176/22
+#      routes:
+#        - to: default
+#          via: 10.0.3.254
+#      nameservers:
+#        addresses:
+#          - 10.0.3.254

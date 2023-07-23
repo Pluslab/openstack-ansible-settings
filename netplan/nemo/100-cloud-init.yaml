@@ -13,6 +13,9 @@ network:
         enp2s0.30:
             id: 30
             link: enp2s0
+        #enp2s0.40:
+        #    id: 40
+        #    link: enp2s0
     bridges:
         br-mgmt:
             addresses:
@@ -26,6 +29,12 @@ network:
             interfaces:
             - enp2s0.20
             mtu: 1500
+        #br-vxlan:
+        #    addresses:
+        #    - 172.29.240.11/22
+        #    interfaces:
+        #    - enp2s0.30
+        #    mtu: 1500
         br-ext:
             addresses:
             - 10.0.3.175/22
